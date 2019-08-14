@@ -1,1 +1,16 @@
 ### Periodically add notes for supplementing the algo learning process. Add as needed.
+
+
+
+### XOR Operator
+
+`
+return nums.reduce((acc, num) => acc ^ num);
+};
+
+return nums.reduce((acc, num) => acc ^ num);
+};
+`
+
+What does the ^ operator do?
+EDIT: I just tried it in the console, and it seems to add most numbers, except itself. 2 ^ 2, for example, is 0. So in the context of this problem, every duplicate number will be "zeroed", and the single number will be n ^ 0, which is n.
