@@ -14,3 +14,8 @@ return nums.reduce((acc, num) => acc ^ num);
 
 What does the ^ operator do?
 EDIT: I just tried it in the console, and it seems to add most numbers, except itself. 2 ^ 2, for example, is 0. So in the context of this problem, every duplicate number will be "zeroed", and the single number will be n ^ 0, which is n.
+
+- For arrays, use methods like slice, the spread operator, and concat that make copies of array so you do not mutate them.
+- Remember that strings are immutable so you will need to use methods like slice, substr, or substring to make copies of strings
+- To make copies of objects use Object.assign, or the spread operator
+  ** Substring is to strings what slice is to arrays. It will extract specific characters between the specified indexes.
