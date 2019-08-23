@@ -189,3 +189,20 @@ function fib(n){
     if (n <= 2) return 1;
     return fib(n-1) + fib(n-2);
 }
+
+
+// ########################################################
+
+//  String Includes
+//  Return a boolean value depending on whether or not the specified wordd contains the specified letter
+
+const stringIncludes = (word, letter) => {
+	let matches;
+	for (let i = 0; i < word.length; i++) {
+		if (word[i] === letter) {
+			matches = true
+        } else {
+			matches = false
+        }}
+		return !!matches
+}
