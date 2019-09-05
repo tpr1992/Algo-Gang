@@ -195,7 +195,7 @@ function fib(n){
 
 //  String Includes (letter match)
 //  Return a boolean value depending on whether or not the specified wordd contains the specified letter
-//  Manually checks each letter iteratively until it finds a match - very inefficient 
+//  Manually checks each letter iteratively until it finds a match - very inefficient
 
 const stringIncludes = (word, letter) => {
 	let matches;
@@ -252,3 +252,37 @@ const stringIncludes = (word, letter) => {
   }
 
   let string = "aabeeeeeeffhhiiiimmooorsssssstttttttwww"
+
+
+  //  CodeWars Credit Card Masking Algo
+  // https://www.codewars.com/kata/5412509bd436bd33920011bc/train/javascript
+  //  Description:
+  // Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+  //
+  // Your task is to write a function maskify, which changes all but the last four characters into '#'.
+
+  // First Attempt
+  //  Passes 97 tests
+  function maskify(cc) {
+    let last4 = cc.substr(cc.length -4)
+    let dontshow = cc.substr(0, cc.length -4)
+    let maskednums = dontshow.replace(/./g, '#')
+    return maskednums.concat(last4)
+  }
+
+  // ##########################################
+
+  // Final Attempt
+  //****************  Passes all 103 tests ******************
+  // If statement is added to handle edge cases where the character count is less than 4
+  function maskify(cc) {
+    if (cc.length > 4) {
+      let last4 = cc.substr(cc.length - 4)
+      let dontshow = cc.substr(0, cc.length - 4)
+      let maskednums = dontshow.replace(/./g, '#')
+      return maskednums.concat(last4)
+
+    } else {
+      return cc
+    }
+  }
