@@ -77,3 +77,18 @@ function notNSquared(string, letter){
 }
 
 So in the function above, we don't go through a loop n times, we only go through a loop two times. So our cost is 2n, and because we ignore multipliers we have a big O of n. So we don't just count any loops when saying that with each loop the big O increases by a factor of n, we consider nested loops.
+
+
+----------------------------------
+Incorrect but 90% close attempt to mumbling from codewars, repeats character n times based on index position
+
+function accum(s) {
+  let arr = Array.from(s)
+  arr.forEach((char, index) => {
+    return arr[index] = char.repeat(index)
+      return arr.push(char)
+    })
+  return arr.join('-')
+}
+
+-------------------------------------

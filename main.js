@@ -265,8 +265,8 @@ const stringIncludes = (word, letter) => {
   //  Passes 97 tests
   function maskify(cc) {
     let last4 = cc.substr(cc.length -4)
-    let dontshow = cc.substr(0, cc.length -4)
-    let maskednums = dontshow.replace(/./g, '#')
+    let dontShow = cc.substr(0, cc.length -4)
+    let maskednums = dontShow.replace(/./g, '#')
     return maskednums.concat(last4)
   }
 
@@ -278,11 +278,72 @@ const stringIncludes = (word, letter) => {
   function maskify(cc) {
     if (cc.length > 4) {
       let last4 = cc.substr(cc.length - 4)
-      let dontshow = cc.substr(0, cc.length - 4)
-      let maskednums = dontshow.replace(/./g, '#')
-      return maskednums.concat(last4)
+      let dontShow = cc.substr(0, cc.length - 4)
+      let maskedNums = dontShow.replace(/./g, '#')
+      return maskedNums.concat(last4)
 
     } else {
       return cc
+    }
+  }
+
+
+  // ##########################################
+
+  // Mumbling
+  // https://www.codewars.com/kata/mumbling/train/javascript
+  // Description: This time no story, no theory. The examples below show you how to write function accum:
+  //
+  // Examples:
+  //
+  // accum("abcd") -> "A-Bb-Ccc-Dddd"
+  // accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+  // accum("cwAt") -> "C-Ww-Aaa-Tttt"
+
+  // Repeats character n times based on the index position, capitalizes first letter of each set
+
+
+  function accum(s) {
+    let arr = []
+    for (let i = 0; i < s.length; i++) {
+      arr.push(format(s[i], i + 1))
+    }
+    return arr.join('-')
+  }
+
+  function format(s, num) {
+    let letter = s.toUpperCase()
+
+    while (letter.length !== num) {
+      letter += s.toLowerCase()
+    }
+    return letter
+  }
+
+  // ##########################################
+
+  // ##########################################
+
+  // Get the Middle Character
+  // https://www.codewars.com/kata/get-the-middle-character/train/javascript
+  // You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+  //
+  // #Examples:
+  //
+  // Kata.getMiddle("test") should return "es"
+  //
+  // Kata.getMiddle("testing") should return "t"
+  //
+  // Kata.getMiddle("middle") should return "dd"
+  //
+  // Kata.getMiddle("A") should return "A"
+
+
+  function getMiddle(s) {
+    let middle = s.length / 2
+    if (s.length % 2 === 1) {
+      return s.substr(middle, 1)
+    } else {
+      return s.substr(middle - 1, 2)
     }
   }
