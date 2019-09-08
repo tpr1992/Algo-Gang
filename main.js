@@ -347,3 +347,32 @@ const stringIncludes = (word, letter) => {
       return s.substr(middle - 1, 2)
     }
   }
+
+
+// Codewars likes
+
+
+  function likes(names) {
+  let response;
+  switch (names.length) {
+    case 0:
+    response = 'no one likes this'
+    console.log(response);
+    break;
+    case 1:
+    response = `${names} likes this`
+    console.log(response);
+    break;
+    case 2:
+    response = `${names[0]} and ${names[1]} like this`
+    console.log(response);
+    break;
+    case 3:
+    response = `${names[0]}, ${names[1]} and ${names[2]} like this`
+    console.log(response);
+    break;
+    default:
+    response = `${names[0]}, ${names[1]} and ${names.length} others like this`
+    console.log(response);
+  }
+}
