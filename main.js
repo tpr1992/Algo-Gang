@@ -390,3 +390,16 @@ function likes(names) {
   }
   return response
 }
+
+
+// ##########################################
+
+// Get the Middle Character
+// https://www.codewars.com/kata/find-the-odd-int/train/javascript
+
+
+const findOdd = (n) => {
+ return  n.reduce((a, b) => {
+    return a ^ b
+  })
+}
