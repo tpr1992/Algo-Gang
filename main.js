@@ -424,3 +424,23 @@ function validatePIN (pin) {
   //return true or false
     return /^(\d{4}|\d{6})$/.test(pin);
 }
+
+// ##########################################
+
+// Delete Occurences of Element if it Occurs More than N times
+// https://www.codewars.com/kata/delete-occurrences-of-an-element-if-it-occurs-more-than-n-times/train/javascript// Given a list lst and a number N, create a new list that contains each number of lst at most N times without reordering. For example if N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+
+
+function deleteNth (arr, n) {
+  let newArr = [];
+  let itemCounts = {};
+  for (let i = 0; i < arr.length; i++){
+    let item = arr[i];
+    let count = itemCounts[item] || 0;
+    if (count < n) {
+      newArr.push(item);
+      itemCounts[item] = count + 1;
+    }
+  }
+  return newArr;
+}
