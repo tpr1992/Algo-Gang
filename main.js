@@ -434,6 +434,7 @@ function validatePIN (pin) {
 function deleteNth (arr, n) {
   let newArr = [];
   let itemCounts = {};
+  // itemCounts can also be an array
   for (let i = 0; i < arr.length; i++){
     let item = arr[i];
     let count = itemCounts[item] || 0;
@@ -443,4 +444,57 @@ function deleteNth (arr, n) {
     }
   }
   return newArr;
+}
+
+
+// ##########################################
+
+// Dynamically Formatting a String From an Array of Objects
+// https://www.codewars.com/kata/format-a-string-of-names-like-bart-lisa-and-maggie/train/javascript
+// Given: an array containing hashes of names
+//
+// Return: a string formatted as a list of names separated by commas except for the last two names, which should be separated by an ampersand.
+
+function list(names) {
+  let newArr = [];
+  names.forEach(item => {
+    for (const prop in item) {
+      newArr.push(item[prop])
+    }
+  })
+  if (newArr.length === 0) {return ''}
+  else if (newArr.length === 1) {return newArr.join('')}
+  else if (newArr.length === 2) {return newArr.join(' & ')}
+  else if (newArr.length === 3) {return `${newArr[0]}, ${newArr[1]} & ${newArr[2]}`}
+  else {
+    let lastTwo = []
+    let final = newArr
+    let last = ` & ${newArr[newArr.length - 1]}`
+    newArr.pop()
+    return newArr.join(', ').concat(last)
+  }
+}
+
+
+// ##########################################
+
+// Dynamically Formatting a String From an Array of Objects
+// https://www.codewars.com/kata/detect-pangram/train/javascript
+// A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence "The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+
+// Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+
+
+function isPangram(str){
+	let letters = 'abcdefghijklmnopqrstuvwxyz'
+	let arr = str.split('')
+	for (let i = 0; i < arr.length; i++) {
+    let elem = arr[i].toLowerCase()
+    letters = letters.replace(elem, "")
+  }
+  if (letters.length === 0 ) {
+    return true
+  } else {
+    return false
+  }
 }
