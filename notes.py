@@ -67,3 +67,39 @@ for i in range(len(y)):
 
   print(total_loss1, total_loss2)
   better_fit = 2
+
+
+# Gradient Descent
+# We derive these gradients using calculus. It is not crucial to understand how we arrive at the gradient equation. To find the gradient of loss as intercept changes, the formula comes out to be:
+#
+# \frac{2}{N}\sum_{i=1}^{N}-(y_i-(mx_i+b))
+# N
+# 2
+# ​
+# i=1
+# ∑
+# N
+# ​	 −(y
+# i
+# ​	 −(mx
+# i
+# ​	 +b))
+# N is the number of points we have in our dataset
+# m is the current gradient guess
+# b is the current intercept guess
+# Basically:
+#
+# we find the sum of y_value - (m*x_value + b) for all the y_values and x_values we have
+# and then we multiply the sum by a factor of -2/N. N is the number of points we have.
+# Define a function called get_gradient_at_b() that takes in a set of x values, x, a set of y values, y, a slope m, and an intercept value b.
+
+def get_gradient_at_b(x, y, m, b):
+    diff = 0
+    N = len(x)
+    for i in range(0, len(x)):
+      y_val = y[i]
+      x_val = x[i]
+      diff += (y_val - ((m * x_val) + b))
+
+    b_gradient = -2/N * diff
+    return b_gradient
