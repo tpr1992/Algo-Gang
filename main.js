@@ -506,23 +506,16 @@ function isPangram(str){
 // generate all prior rows and format as integers with spaces and line breaks for each row (no break after last row)
 function pascalTriangle(j) {
   let arr = []
+  if (j === 0) arr.push(1)
   for (let i = 0; i < j; i++) {
     // check to prevent line break after last row
-    if (i === j - 1) {
-      arr.push(`${pascalGenerate(i)}`)
-
-    } else {
-      arr.push(`${pascalGenerate(i)} \n`)
-    }
+    i === j - 1 ? arr.push(`${pascalGenerate(i)}`) : arr.push(`${pascalGenerate(i)} \n`);
   }
   return arr.join('').replace(/,/g, ' ')
 }
 
-// generates the row for n
 function pascalGenerate(n) {
-  if (n === 0) {
-    return 1
-  }
+  if (n <= 0) return 1;
   return generateNextRow(pascalGenerate(n - 1))
 }
 
