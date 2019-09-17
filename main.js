@@ -95,6 +95,57 @@ var reverse = function(x) {
 
 // ########################################################
 
+// Array Chunking
+// chunk([1,2,3,4,5,6,6,6,7,7,7], 3) -----> [[1,2,3], [4,5,6], [6,6,7], [7,7]]
+// chunk([1,2,3,4], 2) ------> [[1,2], [3,4]]
+
+//SOLUTION #1 iterating using a for of loop
+//SOLUTION
+
+// The for...of statement creates a loop iterating over
+// iterable objects, including: built-in String, Array, Array-like objects
+// (e.g., arguments or NodeList), TypedArray, Map, Set, and user-defined
+// iterables. It invokes a custom iteration hook with statements to be executed
+// for the value of each distinct property of the object.
+
+
+
+function chunk(array, size) {
+  const chunked = []; // set empty "chunk" array
+
+  for (let element of array) {   // cleaner version of a for loop
+    const last = chunked[chunked.length - 1];
+
+    if (!last || last.length === size) { //if current "chunked" array is empty or equals chunk size... make new "chunk"
+      chunked.push([element]);
+    } else {
+      last.push(element); // if current "chunked" array.length is not === size add new element to chunk
+    }
+  }
+
+  return chunked // Don't forget to always return !!
+}
+
+// SOLUTION # 2 using a while loop
+
+function chunkTwo(array, size) {
+  const chunked = [];
+  let index = 0; 
+
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    index += size
+  }
+  return chunked
+}
+
+
+
+
+// ########################################################
+
+// ########################################################
+
 //  Valid Palindrome
 //  https://leetcode.com/problems/valid-palindrome/
 //  Description:
