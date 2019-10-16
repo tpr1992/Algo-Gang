@@ -812,3 +812,47 @@ function greatestCommonDivisor(a, b){
     return greatestCommonDivisor(b, a%b);
   }
 }
+
+
+// ####################################################################################
+
+// Remove duplicate character
+
+function removeDuplicateChar(str){
+  var len = str.length,
+      char,
+      charCount = {},
+      newStr = [];
+  for(var i =0; i<len; i++){
+    char = str[i];
+    if(charCount[char]){
+      charCount[char]++;
+    }
+    else
+      charCount[char] = 1;
+  }
+  for (var j in charCount){
+    if (charCount[j]==1)
+       newStr.push(j);
+  }
+  return newStr.join('');
+}
+
+// ####################################################################################
+
+//  Find missing number
+
+function missingNumber(arr){
+  var n = arr.length+1,
+  sum = 0,
+  expectedSum = n* (n+1)/2;
+
+  for(var i = 0, len = arr.length; i < len; i++){
+    sum += arr[i];
+  }
+
+  return expectedSum - sum;
+}
+
+// > missingNumber([5, 2, 6, 1, 3]);
+//   = 4
