@@ -965,3 +965,75 @@ function maxSubarraySum(arr, num){
 }
 
 maxSubarraySum([2,6,9,2,1,8,5,6,3],3)
+
+
+// ####################################################################################
+// Collect Odd Values - Recursive
+
+function collectOddValues(arr){
+  let newArr = [];
+
+  if(arr.length === 0) {
+    return newArr;
+  }
+
+  if(arr[0] % 2 !== 0){
+    newArr.push(arr[0]);
+  }
+
+  newArr = newArr.concat(collectOddValues(arr.slice(1)));
+  return newArr;
+}
+
+collectOddValues([1,2,3,4,5])
+
+
+// ####################################################################################
+// Linear Search
+
+function linearSearch(arr, val){
+    for(var i = 0; i < arr.length; i++){
+        if(arr[i] === val) return i;
+    }
+    return -1;
+}
+
+linearSearch([34,51,1,2,3,45,56,687], 100)
+
+
+// ####################################################################################
+// Binary Search
+
+// Original Solution
+function binarySearch(arr, elem) {
+  var start = 0;
+  var end = arr.length - 1;
+  var middle = Math.floor((start + end) / 2);
+  while(arr[middle] !== elem && start <= end) {
+    if(elem < arr[middle]){
+      end = middle - 1;
+    } else {
+      start = middle + 1;
+    }
+    middle = Math.floor((start + end) / 2);
+  }
+  if(arr[middle] === elem){
+    return middle;
+  }
+  return -1;
+}
+
+// Refactored Version
+function binarySearch(arr, elem) {
+  var start = 0;
+  var end = arr.length - 1;
+  var middle = Math.floor((start + end) / 2);
+  while(arr[middle] !== elem && start <= end) {
+    if(elem < arr[middle]) end = middle - 1;
+    else start = middle + 1;
+    middle = Math.floor((start + end) / 2);
+  }
+  return arr[middle] === elem ? middle : -1;
+}
+
+binarySearch([2,5,6,9,13,15,28,30], 103)
