@@ -895,9 +895,9 @@ validAnagram('anagrams', 'nagaramm')
 
 // Sum zero
 function sumZero(arr){
-  for(let i = 0; i < arr.length; i++){
-    for(let j = i+1; j < arr.length; j++){
-      if(arr[i] + arr[j] === 0){
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i+1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === 0) {
         return [arr[i], arr[j]];
       }
     }
@@ -912,10 +912,10 @@ sumZero([-4,-3,-2,-1,0,1,2,5])
 // Unique Values
 
 function countUniqueValues(arr){
-  if(arr.length === 0) return 0;
-  var i = 0;
-  for(var j = 1; j < arr.length; j++){
-    if(arr[i] !== arr[j]){
+  if (arr.length === 0) return 0;
+  let i = 0;
+  for (let j = 1; j < arr.length; j++) {
+    if (arr[i] !== arr[j]) {
       i++;
       arr[i] = arr[j]
     }
@@ -929,13 +929,13 @@ countUniqueValues([1,2,2,5,7,7,99])
 // Max Sum
 
 function maxSubarraySum(arr, num) {
-  if ( num > arr.length){
+  if (num > arr.length) {
     return null;
   }
   var max = -Infinity;
-  for (let i = 0; i < arr.length - num + 1; i ++){
+  for (let i = 0; i < arr.length - num + 1; i ++) {
     temp = 0;
-    for (let j = 0; j < num; j++){
+    for (let j = 0; j < num; j++) {
       temp += arr[i + j];
     }
     if (temp > max) {
@@ -992,7 +992,7 @@ collectOddValues([1,2,3,4,5])
 // Linear Search
 
 function linearSearch(arr, val){
-    for(var i = 0; i < arr.length; i++){
+    for (var i = 0; i < arr.length; i++) {
         if(arr[i] === val) return i;
     }
     return -1;
@@ -1006,18 +1006,18 @@ linearSearch([34,51,1,2,3,45,56,687], 100)
 
 // Original Solution
 function binarySearch(arr, elem) {
-  var start = 0;
-  var end = arr.length - 1;
-  var middle = Math.floor((start + end) / 2);
-  while(arr[middle] !== elem && start <= end) {
-    if(elem < arr[middle]){
+  let start = 0;
+  let end = arr.length - 1;
+  let middle = Math.floor((start + end) / 2);
+  while (arr[middle] !== elem && start <= end) {
+    if (elem < arr[middle]) {
       end = middle - 1;
     } else {
       start = middle + 1;
     }
     middle = Math.floor((start + end) / 2);
   }
-  if(arr[middle] === elem){
+  if (arr[middle] === elem) {
     return middle;
   }
   return -1;
@@ -1025,11 +1025,11 @@ function binarySearch(arr, elem) {
 
 // Refactored Version
 function binarySearch(arr, elem) {
-  var start = 0;
-  var end = arr.length - 1;
-  var middle = Math.floor((start + end) / 2);
-  while(arr[middle] !== elem && start <= end) {
-    if(elem < arr[middle]) end = middle - 1;
+  let start = 0;
+  let end = arr.length - 1;
+  let middle = Math.floor((start + end) / 2);
+  while (arr[middle] !== elem && start <= end) {
+    if (elem < arr[middle]) end = middle - 1;
     else start = middle + 1;
     middle = Math.floor((start + end) / 2);
   }
@@ -1037,3 +1037,39 @@ function binarySearch(arr, elem) {
 }
 
 binarySearch([2,5,6,9,13,15,28,30], 103)
+
+
+// ####################################################################################
+// Bubble Sort
+
+// Naive Solution
+function bubbleSort(arr) {
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      console.log(arr, arr[j], arr[j+1]);
+      if(arr[j] > arr[j+1]){
+        let temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+// Alt Version
+function bubbleSort(arr) {
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+      }
+    }
+  }
+  return arr;
+}
+
+bubbleSort([8,1,2,3,4,5,6,7])
