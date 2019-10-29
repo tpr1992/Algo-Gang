@@ -36,7 +36,7 @@ function generateNextRow(lastRow) {
   nextRow.push(1)
   return nextRow
 }
-console.log(pascalTriangle(10))
+// console.log(pascalTriangle(10))
 
 
 // ------------------------------------------------------
@@ -47,7 +47,7 @@ console.log(pascalTriangle(10))
 * @param {number} lineNumber - zero based.
 * @return {number[]}
 */
-export default function pascalTriangle(lineNumber) {
+function pascalTriangle(lineNumber) {
   const currentLine = [1];
 
   const currentLineSize = lineNumber + 1;
@@ -59,3 +59,31 @@ export default function pascalTriangle(lineNumber) {
 
   return currentLine;
 }
+
+// ------------------------------------------------------
+
+function pascalTriangle(j) {
+  let arr = []
+  if (j === 0) arr.push(1)
+  for (let i = 0; i < j; i++) {
+    // check to prevent line break after last row
+    i === j - 1 ? arr.push(`${pascalGenerate(i)}`) : arr.push(`${pascalGenerate(i)} \n`);
+  }
+  return arr.join('').replace(/,/g, ' ')
+}
+
+function pascalGenerate(n) {
+  if (n <= 0) return 1;
+  return generateNextRow(pascalGenerate(n - 1))
+}
+
+function generateNextRow(lastRow) {
+  let nextRow = []
+  nextRow.push(1)
+  for (let i = 0; i < lastRow.length - 1; i++) {
+    nextRow.push(lastRow[i] + lastRow[i + 1])
+  }
+  nextRow.push(1)
+  return nextRow
+}
+console.log(pascalTriangle(5))
