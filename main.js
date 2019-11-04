@@ -1139,3 +1139,81 @@ function selectionSort(arr) {
 }
 
 selectionSort([0,2,34,22,10,19,17]);
+
+
+// #######################################################################################
+
+// Regex Phone Number Validation
+/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+
+// #######################################################################################
+
+// Chunking
+// --- Directions
+// Given an array and chunk size, divide the array into many subarrays
+// where each subarray is of length size
+// --- Examples
+// chunk([1, 2, 3, 4], 2) --> [[ 1, 2], [3, 4]]
+// chunk([1, 2, 3, 4, 5], 2) --> [[ 1, 2], [3, 4], [5]]
+// chunk([1, 2, 3, 4, 5, 6, 7, 8], 3) --> [[ 1, 2, 3], [4, 5, 6], [7, 8]]
+// chunk([1, 2, 3, 4, 5], 4) --> [[ 1, 2, 3, 4], [5]]
+// chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
+
+function chunk(array, size) {
+  const chunked = [];
+  let index = 0;
+
+  while (index < array.length) {
+    chunked.push(array.slice(index, index + size));
+    index += size;
+  }
+
+  return chunked;
+}
+
+module.exports = chunk;
+
+// function chunk(array, size) {
+//   const chunked = [];
+//
+//   for (let element of array) {
+//     const last = chunked[chunked.length - 1];
+//
+//     if (!last || last.length === size) {
+//       chunked.push([element]);
+//     } else {
+//       last.push(element);
+//     }
+//   }
+//
+//   return chunked;
+// }
+
+// #######################################################################################
+
+// Queue
+// --- Description
+// Create a queue data structure.  The queue
+// should be a class with methods 'add' and 'remove'.
+// Adding to the queue should store an element until
+// it is removed
+// --- Examples
+//     const q = new Queue();
+//     q.add(1);
+//     q.remove(); // returns 1;
+
+class Queue {
+  constructor() {
+    this.data = [];
+  }
+
+  add(record) {
+    this.data.unshift(record);
+  }
+
+  remove() {
+    return this.data.pop();
+  }
+}
+
+module.exports = Queue;
